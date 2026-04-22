@@ -56,12 +56,12 @@ func GetFlags() []cli.Flag {
 		&cli.StringFlag{
 			Name:    "psql-host",
 			Aliases: []string{"H"},
-			Sources: cli.EnvVars(EnvBase+"_PSQL_HOST", "PGHOST"),
+			Sources: cli.EnvVars(EnvBase + "_PSQL_HOST"),
 		},
 		&cli.IntFlag{
 			Name:    "psql-port",
 			Aliases: []string{"p"},
-			Sources: cli.EnvVars(EnvBase+"_PSQL_PORT", "PGPORT"),
+			Sources: cli.EnvVars(EnvBase + "_PSQL_PORT"),
 			Value:   5432,
 		},
 		&cli.StringFlag{
@@ -77,12 +77,12 @@ func GetFlags() []cli.Flag {
 		&cli.StringFlag{
 			Name:    "psql-database",
 			Aliases: []string{"d"},
-			Sources: cli.EnvVars(EnvBase+"_PSQL_DATABASE", "PGDATABASE"),
+			Sources: cli.EnvVars(EnvBase + "_PSQL_DATABASE"),
 		},
 		&cli.StringFlag{
 			Name:    "psql-sslmode",
 			Aliases: []string{"s"},
-			Sources: cli.EnvVars(EnvBase+"_PSQL_SSLMODE", "PGSSLMODE"),
+			Sources: cli.EnvVars(EnvBase + "_PSQL_SSLMODE"),
 			Value:   "disable",
 		},
 		&cli.StringFlag{
@@ -344,7 +344,7 @@ func validateConfig(config *Config) error {
 }
 
 func IsMongoProbeActive(config *Config) bool {
-	return config.MongoHost != "" || config.MongoUser != "" || config.MongoPassword != "" || config.MongoDatabase != "" || config.MongoAuthSource != ""
+	return config.MongoHost != ""
 }
 
 func validateMongoProbeConfig(config *Config) error {
@@ -377,7 +377,7 @@ func validateHTTPProbeConfig(config *Config) error {
 }
 
 func IsPostgresProbeActive(config *Config) bool {
-	return config.PsqlHost != "" || config.PsqlUser != "" || config.PsqlPassword != "" || config.PsqlDatabase != ""
+	return config.PsqlHost != ""
 }
 
 func validatePostgresProbeConfig(config *Config) error {
